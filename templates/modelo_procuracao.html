@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Procuração</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 60px;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            text-align: justify;
+            margin: 0;
+        }
+
+        .marca-dagua-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .marca-dagua-container table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        .marca-dagua-container td {
+            text-align: center;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+
+        .marca-dagua-container img {
+            width: 400px;
+        }
+
+        .conteudo {
+            padding: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 18pt;
+            margin-bottom: 40px;
+        }
+
+        .assinatura {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .assinatura p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Marca d'água via tabela de fundo -->
+    <div class="marca-dagua-container">
+        <table>
+            <tr>
+                <td>
+                    <img src="file:///{{ logo_path | replace('\\', '/') }}" style="width: 600px; max-width: 90%; opacity: 0.3;">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="conteudo">
+        <h1>PROCURAÇÃO</h1>
+
+        <p>Pelo presente instrumento particular de mandato.</p>
+
+        <p><strong>OUTORGANTE:</strong> {{ nome }}, brasileira, portador do CPF: {{ cpf }} responsável pela unidade consumidora de energia elétrica localizada na {{ endereco }} - {{ cidade }}.</p>
+
+        <p><strong>OUTORGADO:</strong> JOÃO MARQUES DE SOUZA JUNIOR, brasileiro, Técnico em eletrotécnica, portador do CPF: 446.790.168-09, residente na AV. SÃO JOSÉ DO RIO PRETO – 3730, BAIRRO ELDORADO, CEP: 15091-360, SÃO JOSÉ DO RIO PRETO – SP</p>
+
+        <p><strong>PODERES CONFERIDOS:</strong> Representar o OUTORGANTE perante a Concessionária CPFL PAULISTA, assinando toda a documentação necessária para o bom trâmite do processo de solicitação de acesso e efetiva conexão do sistema fotovoltaico, encaminhando soluções de pendências e solicitando vistorias e informações, relativas à unidade consumidora número {{ uc }}, localizada no endereço {{ endereco_uc }}, praticando todos os atos necessários ao desempenho do presente mandato.</p>
+
+        <p>O presente mandato vigorará até a finalização do processo de solicitação de acesso da microgeração em questão, que se dará com a substituição do medidor de energia, vedado o substabelecimento dos poderes outorgado.</p>
+
+        <p>{{ data }}</p>
+
+        <div class="assinatura">
+            <p>________________________________________</p>
+            <p>OUTORGANTE</p>
+            <p>{{ nome }}</p>
+            {{ cpf }}
+        </div>
+    </div>
+
+</body>
+</html>

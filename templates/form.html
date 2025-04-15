@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário CPFL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Formulário para Edição de Documentos - CPFL</h2>
+
+    <form action="/gerar" method="POST" onsubmit="return validarFormulario()">
+        <fieldset>
+            <legend>Dados do Responsável</legend>
+            <label>Nome:<input type="text" name="nome" required></label>
+            <label>CPF ou CNPJ:<input type="text" name="cpf_cnpj" id="cpf_cnpj" required></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Endereço</legend>
+            <label>CEP:<input type="text" id="cep" name="cep" onblur="buscarEndereco()" required></label>
+            <label>Número:<input type="text" name="numero" required></label>
+            <label>Endereço:<input type="text" id="endereco" name="endereco" readonly required></label>
+            <label>Cidade:<input type="text" id="cidade" name="cidade" readonly required></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Unidade Consumidora</legend>
+            <label>Código da UC:<input type="text" name="codigo_uc" required></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Módulos Fotovoltaicos</legend>
+            <label>Fabricante:<input type="text" name="mod_fabricante" required></label>
+            <label>Modelo:<input type="text" name="mod_modelo" required></label>
+            <label>Potência (W):<input type="number" name="mod_potencia" required></label>
+            <label>Quantidade:<input type="number" name="mod_quantidade" required></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Inversores</legend>
+            <label>Fabricante:<input type="text" name="inv_fabricante" required></label>
+            <label>Modelo:<input type="text" name="inv_modelo" required></label>
+            <label>Potência (W):<input type="number" name="inv_potencia" required></label>
+            <label>Quantidade:<input type="number" name="inv_quantidade" required></label>
+        </fieldset>
+
+        <button type="submit">Gerar Documentos CPFL (ZIP)</button>
+    </form>
+
+    <!-- Scripts externos -->
+    <script src="{{ url_for('static', filename='js/viacep.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validarCpfCnpj.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mascararCpfCnpj.js') }}"></script>
+</body>
+</html>
